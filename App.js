@@ -31,4 +31,3 @@ export const Navigation = StackNavigator({
     headerMode:'none',
   }
 );
-
