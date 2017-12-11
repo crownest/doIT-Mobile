@@ -142,7 +142,7 @@ class Register extends Component {
         </TouchableOpacity>
         <View style={{flexDirection: 'row', justifyContent:'center'}}>
           <Text style={{color:'#7200da'}}>If you have an account </Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Login')}}>
             <Text style={{color:'#fb684b',fontStyle: 'italic'}}>Sign in</Text>
           </TouchableOpacity>
         </View>

@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 
 import Splash from './src/components/Splash';
 import Register from './src/components/Register';
+import Login from './src/components/Login'
 
 import { StackNavigator } from 'react-navigation';
 
@@ -25,6 +26,9 @@ export const Navigation = StackNavigator({
     },
     Register:{
       screen: Register
+    },
+    Login:{
+      screen: Login
     }
   },
   {
