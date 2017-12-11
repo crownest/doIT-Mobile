@@ -8,7 +8,7 @@ import {
 class Splash extends Component {
   componentWillMount () {
     setTimeout (() => {
-        this.props.navigation.navigate('Register');
+        this.props.navigation.navigate('Login');
     }, 2000); 
 }
 
