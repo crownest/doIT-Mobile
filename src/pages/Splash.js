@@ -16,11 +16,11 @@ class Splash extends Component {
     return (
       <View style={styles.container}>
         <Image
-        source={require('./img/bg.png')}
+        source={require('../components/img/bg.png')}
         style={styles.bg}
         />
         <Image
-        source={require('./img/logo.png')}
+        source={require('../components/img/logo.png')}
         />
       </View>
     );
