@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   AsyncStorage,
   KeyboardAvoidingView,
-  WebView
+  WebView,
+  Alert
 } from 'react-native';
 
 import {
@@ -19,7 +20,9 @@ import {
   HTTP_200_OK
 } from "../actions/BaseAction";
 
-const api_auth_login_url = url + '/auth/login/'
+import normalize from '../helpers/Normalize';
+
+const api_auth_login_url = url + '/auth/login/';
 
 class Login extends Component {
   state = {
@@ -37,7 +40,7 @@ class Login extends Component {
 
   setErrorForm=(res)=>{
     if (res.body.non_field_errors) {
-      alert(res.body.non_field_errors);
+      Alert.alert(res.body.non_field_errors);
     }else{
       for(var input_name in res.body){
         if(this.refs[input_name]){
@@ -59,7 +62,7 @@ class Login extends Component {
   
   setAuthInformations=(auth_token, user_id)=>{
     if (auth_token && user_id) {
-      AsyncStorage.setItem('auth_token', JSON.stringify(auth_token));
+      AsyncStorage.setItem('auth_token', auth_token);
       AsyncStorage.setItem('user_id', JSON.stringify(user_id)); 
       return true;
     } else {
@@ -79,11 +82,12 @@ class Login extends Component {
       .end((err, res)=>{
         if (err || res.statusCode !== HTTP_200_OK) {
           this.clearForm(data);
-          alert('Please correct the errors and try again!');
+          Alert.alert('Please correct the errors and try again!');
           this.setErrorForm(res);
         } else {
           this.resetForm();
           this.setAuthInformations(res.body.auth_token, res.body.user_id);
+          this.props.navigation.navigate('TaskList');
         }
       }
     );
@@ -100,12 +104,13 @@ class Login extends Component {
     `;
     return (
       <View style={styles.container}>
-        <KeyboardAvoidingView  behavior={'position'} >
+        <View>
           <Image
-          source={require('./img/logo.png')}
+          source={require('../components/img/logo.png')}
           style={styles.logo} 
           />
-          <View style={{paddingHorizontal: 32}}>
+          </View>
+          <View style={{ paddingHorizontal: 32}}>
             <TextInput 
               ref= {'email'} style={styles.input}
               placeholder="Email" underlineColorAndroid= {'transparent'}
@@ -128,7 +133,6 @@ class Login extends Component {
               <Text style={styles.forgot_pss}>Forgot Password ?</Text>
             </TouchableOpacity>  
           </View>
-        </KeyboardAvoidingView>
         <TouchableOpacity style={styles.btn} onPress={()=>this.authLogin(this.state)}>
           <Text style={styles.btnText}>Sign in</Text>
         </TouchableOpacity>
@@ -147,35 +151,36 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     backgroundColor: '#fff',
+    flexDirection: 'column'
   },
   logo: {
-    width: 112,
-    height: 87,
-    marginTop: 74,
-    marginBottom: 70,
-    alignSelf: 'center'
+    width: normalize(112),
+    height: normalize(87),
+    alignSelf: 'center',
+    marginTop: normalize(70),
+    marginBottom: normalize(70)
   },
   input: {
     textAlign: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#7200da',
-    fontSize: 16
+    fontSize: normalize(16)
   },
   btn: {
     borderWidth: 1,
     borderColor: '#7200da',
-    height: 44,
+    height: normalize(44),
     borderRadius: 60,
     justifyContent: 'center',
-    paddingVertical: 25,
-    marginTop: 50,
-    marginBottom: 15,
-    marginHorizontal: 36
+    paddingVertical: normalize(24),
+    marginHorizontal:36,
+    marginTop: normalize(50),
+    marginBottom: normalize(15)
   },
   btnText:{
     color: '#7200da',
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: normalize(20),
   },
   forgot_pss: {
     textAlign: 'right', 

@@ -7,16 +7,19 @@ import {
   TextInput,
   KeyboardAvoidingView,
   TouchableOpacity,
-  WebView
+  WebView,
+  ScrollView,
+  Alert
 } from 'react-native';
 
 import {
   request,
   api_url,
   HTTP_201_CREATED,
+  api_user_url,
 } from "../actions/BaseAction";
 
-const api_user_url = api_url + '/users/';
+import normalize from '../helpers/Normalize';
 
 class Register extends Component {
   state = {
@@ -60,12 +63,12 @@ class Register extends Component {
       .end((err, res)=>{
         if (err || res.statusCode !== HTTP_201_CREATED) {
           this.clearErrorForm(res);
-          alert(
+          Alert.alert(
             "Please correct the errors and try again!",
           );
           this.setErrorForm(res);
         } else {
-          alert(
+          Alert.alert(
             "Your registration was successful. Please verify your email address."
           );
         }
@@ -75,7 +78,7 @@ class Register extends Component {
 
   render() {
     let html= `
-        <p id="content" style="color:red; font-size:13px"></p>
+        <p id="content" style="color:red; font-size:12px"></p>
         <script>
           document.addEventListener('message', function(e) {
             document.getElementById("content").innerHTML = e.data;
@@ -83,13 +86,13 @@ class Register extends Component {
         </script>
         `;
     return (
-      <View style={styles.container}>
-        <KeyboardAvoidingView  behavior={'position'} >
+      <ScrollView style={styles.container}>
+        <KeyboardAvoidingView  behavior={'position'} > 
           <Image
-          source={require('./img/logo.png')}
+          source={require('../components/img/logo.png')}
           style={styles.logo} 
-          />
-          <View style={{paddingHorizontal: 32}}>
+          /> 
+          <View style={{ paddingHorizontal: 32}}>
             <TextInput 
               ref= {'email'} style={styles.input}
               placeholder="Email" underlineColorAndroid= {'transparent'}
@@ -123,7 +126,7 @@ class Register extends Component {
               returnKeyLabel= {"next"} secureTextEntry= {true}
               value={this.props.password} onChangeText={(password) => this.setState({password})}          
             />
-            <View style={{width: 500, height: 34}}>
+            <View style={{width: 500, height:34}}>
               <WebView source={{html : html}} ref= {'password_feedback'}/>
             </View>
             <TextInput
@@ -146,7 +149,7 @@ class Register extends Component {
             <Text style={{color:'#fb684b',fontStyle: 'italic'}}>Sign in</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -155,35 +158,36 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     backgroundColor: '#fff',
+    flexDirection: 'column'
   },
   logo: {
-    width: 112,
-    height: 87,
-    marginTop: 35,
-    marginBottom: 40,
+    width: normalize(112),
+    height: normalize(87),
+    marginTop: normalize(35),
+    marginBottom: normalize(25),
     alignSelf: 'center'
   },
   input: {
     textAlign: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#7200da',
-    fontSize: 16,
+    fontSize: normalize(16),
   },
   btn: {
     borderWidth: 1,
     borderColor: '#7200da',
-    height: 40,
+    height: normalize(44),
     borderRadius: 60,
     justifyContent: 'center',
-    paddingVertical: 25,
-    marginTop: 20,
-    marginBottom: 12,
+    paddingVertical: normalize(25),
+    marginTop: normalize(20),
+    marginBottom: normalize(12),
     marginHorizontal: 32
   },
   btnText:{
     color: '#7200da',
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: normalize(20),
   }
 });
   
