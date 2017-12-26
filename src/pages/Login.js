@@ -7,7 +7,6 @@ import {
   TextInput,
   TouchableOpacity,
   AsyncStorage,
-  KeyboardAvoidingView,
   WebView,
   Alert
 } from 'react-native';

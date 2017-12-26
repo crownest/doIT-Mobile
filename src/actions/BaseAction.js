@@ -4,7 +4,7 @@ const request = require("superagent");
 
 const url = "http://api.doit.unicrow.com";
 const api_url = url + "/v1";
-const api_user_url = api_url + '/users/';
+const api_users_url = api_url + '/users/';
 const api_tasks_url = api_url + '/tasks/';
 
 const HTTP_200_OK = 200
@@ -24,7 +24,7 @@ export{
   request,
   url,
   api_url,
-  api_user_url,
+  api_users_url,
   api_tasks_url,
   HTTP_200_OK,
   HTTP_201_CREATED,
