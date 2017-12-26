@@ -7,12 +7,11 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
-
 import normalize from '../helpers/Normalize';
-
+import Drawer from 'react-native-drawer';
 import TaskListEmptyContent from '../components/TaskListEmptyContent';
 import TaskListContent from '../components/TaskListContent';
-
+import Navbar from './Navbar';
 import {listTask} from '../actions/TaskActions';
 
 class TaskList extends Component {
@@ -28,38 +27,49 @@ class TaskList extends Component {
     });
   } 
 
+  openNavbar = () => {
+    this._drawer.open()
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <View style={{flex: 1}}>
-          <Image
-            source={require('../components/img/rectangle.png')}
-            style={{width: '100%',position: 'absolute'}}
-          />
-          <View style={styles.menu} >
-            <TouchableOpacity>
-              <Icon
-                name= 'md-menu'
-                size= {50}
-                color={'#4a4a4a'}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image
-                source={require('../components/img/new-add.png')}
-                style={{height: 60}}
-              />
-            </TouchableOpacity>
+      <Drawer
+      ref={(ref) => this._drawer = ref}
+      content={<Navbar/>}
+      tapToClose={true}
+      openDrawerOffset={0.2} 
+      >
+        <View style={styles.container}>
+          <View style={{flex: 1}}>
+            <Image
+              source={require('../components/img/rectangle.png')}
+              style={{width: '100%',position: 'absolute'}}
+            />
+            <View style={styles.menu} >
+              <TouchableOpacity onPress={()=>{this.openNavbar()}}>
+                <Icon
+                  name= 'md-menu'
+                  size= {50}
+                  color={'#4a4a4a'}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  source={require('../components/img/new-add.png')}
+                  style={{height: 60}}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={{flex: 2}}>
+          { 
+            (this.state.tasks.length > 0) ?  
+            <TaskListContent tasks = {this.state.tasks}/>
+            : <TaskListEmptyContent />
+          } 
           </View>
         </View>
-        <View style={{flex: 2}}>
-        { 
-          (this.state.tasks.length > 0) ?  
-          <TaskListContent tasks = {this.state.tasks}/>
-          : <TaskListEmptyContent />
-        } 
-        </View>
-      </View>
+      </Drawer>
     );
   }
 }
