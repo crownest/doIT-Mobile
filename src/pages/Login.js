@@ -136,7 +136,7 @@ class Login extends Component {
           <Text style={styles.btnText}>Sign in</Text>
         </TouchableOpacity>
         <View style={{flexDirection: 'row', justifyContent:'center'}}>
-          <Text style={{color:'#7200da'}}>Do you have an account yet </Text>
+          <Text style={{color:'#7200da'}}>Don't you have an account yet </Text>
           <TouchableOpacity onPress={()=>this.props.navigation.navigate('Register')}>
             <Text style={{color:'#fb684b',fontStyle: 'italic'}}>Sign up</Text>
           </TouchableOpacity>

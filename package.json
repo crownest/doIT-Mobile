@@ -9,7 +9,6 @@
   "dependencies": {
     "react": "16.0.0",
     "react-native": "0.50.3",
-    "react-native-awesome-alerts": "^1.0.3",
     "react-native-drawer": "^2.5.0",
     "react-native-restart": "0.0.6",
     "react-native-vector-icons": "^4.4.2",
@@ -23,5 +22,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": ["./src/assets/fonts"]
   }
 }

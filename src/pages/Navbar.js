@@ -42,7 +42,7 @@ class Navbar extends Component {
           <Text style={styles.txt}>{this.state.user.first_name} {this.state.user.last_name}</Text>
         </View>
         <View style={styles.footer}>
-          <TouchableOpacity style={styles.element}>
+          <TouchableOpacity style={styles.element} onPress = {()=>{this.props.parent.props.navigation.navigate('Settings')}}>
             <Image
               source={require('../components/img/settings.png')}
               style={{marginRight: 30, width: 30, height: 30 }}

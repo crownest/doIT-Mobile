@@ -16,7 +16,7 @@ import {
   request,
   api_url,
   HTTP_201_CREATED,
-  api_user_url,
+  api_users_url,
 } from "../actions/BaseAction";
 
 import normalize from '../helpers/Normalize';
@@ -50,7 +50,7 @@ class Register extends Component {
 
   createUser(data){
     return request
-      .post(api_user_url)
+      .post(api_users_url)
       .type("application/json")
       .accept("application/json")
       .send({
