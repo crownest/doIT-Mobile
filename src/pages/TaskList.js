@@ -35,7 +35,7 @@ class TaskList extends Component {
     return (
       <Drawer
       ref={(ref) => this._drawer = ref}
-      content={<Navbar/>}
+      content={<Navbar parent = {this}/>}
       tapToClose={true}
       openDrawerOffset={0.2} 
       >
