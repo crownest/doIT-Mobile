@@ -12,6 +12,7 @@ import Login from './src/pages/Login';
 import TaskList from './src/pages/TaskList';
 import Settings from './src/pages/Settings';
 import SettingsInformations from './src/pages/SettingsInformations';
+import SettingsPassword from './src/pages/SettingsPassword';
 
 import { StackNavigator } from 'react-navigation';
 
@@ -41,7 +42,10 @@ export const Navigation = StackNavigator({
     },
     SettingsInformations:{
       screen: SettingsInformations
-    } 
+    },
+    SettingsPassword:{
+      screen: SettingsPassword
+    }
   },
   {
     headerMode:'none',
