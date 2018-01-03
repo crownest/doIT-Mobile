@@ -11,6 +11,7 @@ import Register from './src/pages/Register';
 import Login from './src/pages/Login';
 import TaskList from './src/pages/TaskList';
 import Settings from './src/pages/Settings';
+import SettingsInformations from './src/pages/SettingsInformations';
 
 import { StackNavigator } from 'react-navigation';
 
@@ -37,6 +38,9 @@ export const Navigation = StackNavigator({
     },
     Settings:{
       screen: Settings
+    },
+    SettingsInformations:{
+      screen: SettingsInformations
     } 
   },
   {
