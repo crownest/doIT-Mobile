@@ -102,7 +102,7 @@ class SettingsInformations extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('TaskList')}}>
+        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Settings')}}>
             <Icon
               name = 'keyboard-backspace'
               size = {30}

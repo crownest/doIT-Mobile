@@ -13,6 +13,7 @@ import TaskList from './src/pages/TaskList';
 import Settings from './src/pages/Settings';
 import SettingsInformations from './src/pages/SettingsInformations';
 import SettingsPassword from './src/pages/SettingsPassword';
+import ChangePhoto from './src/pages/ChangePhoto';
 
 import { StackNavigator } from 'react-navigation';
 
@@ -45,6 +46,9 @@ export const Navigation = StackNavigator({
     },
     SettingsPassword:{
       screen: SettingsPassword
+    },
+    ChangePhoto:{
+      screen: ChangePhoto
     }
   },
   {
