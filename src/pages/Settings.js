@@ -41,7 +41,7 @@ class Settings extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.setting}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>{this.props.navigation.navigate('ChangePhoto')}}>
             <Text style={styles.settingTitle} >Change Photo</Text>
           </TouchableOpacity>
         </View>

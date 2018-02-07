@@ -2,7 +2,7 @@ import { AsyncStorage } from 'react-native';
 
 const request = require("superagent");
 
-const url = "http://api.doit.unicrow.com";
+const url = "https://api.doit.unicrow.com";
 const api_url = url + "/v1";
 const api_users_url = api_url + '/users/';
 const api_tasks_url = api_url + '/tasks/';
