@@ -128,7 +128,7 @@ class Login extends Component {
             <View style={{width: 500, height: 20}}>
               <WebView source={{html : html}} ref= {'password_feedback'}/>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate('ForgotPassword')}>
               <Text style={styles.forgot_pss}>Forgot Password ?</Text>
             </TouchableOpacity>  
           </View>

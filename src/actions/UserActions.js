@@ -73,4 +73,14 @@ export async function retrieveUser(onComplete) {
       ],
     );
   }
- 
+
+  export function forgotUserPassword(data, onComplete) {
+    return request
+      .post(api_users_url + 'password/forgot/')
+      .type("application/json")
+      .accept("application/json")
+      .send(data)
+      .end((err, res) => {
+        onComplete(res);
+      });
+  }
