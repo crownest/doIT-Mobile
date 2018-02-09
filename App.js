@@ -14,6 +14,7 @@ import Settings from './src/pages/Settings';
 import SettingsInformations from './src/pages/SettingsInformations';
 import SettingsPassword from './src/pages/SettingsPassword';
 import ChangePhoto from './src/pages/ChangePhoto';
+import ForgotPassword from './src/pages/ForgotPassword';
 
 import { StackNavigator } from 'react-navigation';
 
@@ -49,6 +50,9 @@ export const Navigation = StackNavigator({
     },
     ChangePhoto:{
       screen: ChangePhoto
+    },
+    ForgotPassword:{
+      screen: ForgotPassword
     }
   },
   {
